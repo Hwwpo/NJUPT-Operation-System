@@ -1,0 +1,10 @@
+.DS_Store
+/.idea/*
+
+/exp1/.idea/*
+/exp1/cmake-build-debug/*
+/exp1/CMakeLists.txt
+
+/exp2/.idea/*
+/exp2/cmake-build-debug/*
+/exp2/CMakeLists.txt
