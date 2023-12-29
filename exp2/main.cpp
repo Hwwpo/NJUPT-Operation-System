@@ -46,7 +46,7 @@ void initialize_Resource(std::vector<process> &A, std::vector<int> &B) {
             Allocation.push_back(x);
         }
         for(int j = 0; j < M; j++) {
-            int x = Max[i] - Allocation[i];
+            int x = Max[j] - Allocation[j];
             Need.push_back(x);
         }
         process tmp(i, Max, Allocation, Need);
@@ -59,11 +59,40 @@ void initialize_Resource(std::vector<process> &A, std::vector<int> &B) {
     }
 }
 
+void printResource(const std::vector<process> &A, const std::vector<int> &B) {
+    int cell_width = 15;
+    std::cout << std::left << std::setfill(' ') << std::endl;
+    std::cout << std::setw(cell_width) << ""
+              << std::setw(cell_width) << "Max"
+              << std::setw(cell_width) << "Allocation"
+              << std::setw(cell_width) << "Need"
+              << std::setw(cell_width) << "Available";
+    std::cout << std::endl << std::setw(cell_width) << "Process";
+    std::string str;
+    for(int i = 0; i < M; i++) {
+        str += char(i + 65);
+        str += "  ";
+    }
+    for(int i = 0; i < 4; i++) {
+        std::cout << std::setw(cell_width) << str;
+    }
+    std::cout << std::endl;
+    int flag = 1;
+    for(auto item:A) {
+        item.Display(cell_width);
+        if(flag-- == 1)
+            std::cout << std::setw(cell_width) << vector2string(B);
+        std::cout << std::endl;
+    }
+
+}
+
 void run() {
     int input;
     std::vector<process> processes;
     std::vector<int> available;
-    while(true) {
+    int i = 2;
+    while(i--) {
         printMenu();
         Input("Please choose the function:", input, 0, 2);
         switch (input) {
@@ -76,7 +105,8 @@ void run() {
                 break;
             // TODO: 打印进程资源信息
             case 2:
-
+                printResource(processes, available);
+                break;
             default:
                 break;
         }
