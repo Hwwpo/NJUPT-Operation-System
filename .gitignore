@@ -8,3 +8,7 @@
 /exp2/.idea/*
 /exp2/cmake-build-debug/*
 /exp2/CMakeLists.txt
+
+/exp3/.idea/*
+/exp3/cmake-build-debug/*
+/exp3/CMakeLists.txt
